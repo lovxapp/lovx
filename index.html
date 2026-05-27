@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="css/style.css"
+      type="text/css"
+      data-precedence="default"
+    />
+    <title>Lovx — Founding Partner Program</title>
+    <style>
+      :root {
+        --bg-deep: #0a0a12;
+        --accent-pink: #f472b6;
+        --accent-purple: #a855f7;
+        --accent-violet: #8b5cf6;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-deep);
+        font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .section-gap {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+
+      @media (min-width: 768px) {
+        .section-gap {
+          padding-top: 8rem;
+          padding-bottom: 8rem;
+        }
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        min-height: 100%;
+      }
+
+      /* Anchor targets clear fixed nav (64px) */
+      #story,
+      #requirements,
+      #register {
+        scroll-margin-top: 5rem;
+      }
+
+      /* Grid background */
+      .page-wrap {
+        position: relative;
+        min-height: 100vh;
+        isolation: isolate;
+      }
+
+      .page-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: radial-gradient(ellipse 90% 50% at 50% 0%, black 15%, transparent 85%);
+      }
+
+      .page-main {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Nav glass */
+      .nav-glass {
+        background: rgba(10, 10, 18, 0.72);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      /* Nav: show links from 640px */
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      @media (min-width: 640px) {
+        .nav-links {
+          display: flex;
+        }
+      }
+
+      /* Hero */
+      .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-top: 5.5rem;
+        padding-bottom: 5.5rem;
+      }
+
+      .hero-inner {
+        width: 100%;
+        max-width: 56rem;
+        margin: 0 auto;
+      }
+
+      /* Hero CTA buttons */
+      .hero-cta-row {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.875rem;
+        width: 100%;
+        max-width: 28rem;
+        margin-top: 2.5rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media (min-width: 520px) {
+        .hero-cta-row {
+          flex-direction: row;
+          align-items: center;
+          max-width: 36rem;
+          gap: 1rem;
+        }
+      }
+
+      .btn-hero {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.625rem;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.25;
+        text-decoration: none;
+        transition:
+          transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.25s ease,
+          background 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+
+      @media (min-width: 520px) {
+        .btn-hero {
+          width: auto;
+          flex: 1;
+          min-width: 0;
+          padding-left: 1.75rem;
+          padding-right: 1.75rem;
+        }
+      }
+
+      .btn-hero-primary {
+        color: #fff;
+        background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+        box-shadow:
+          0 0 0 1px rgba(236, 72, 153, 0.3),
+          0 12px 32px -8px rgba(168, 85, 247, 0.4);
+      }
+
+      .btn-hero-primary:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 0 0 1px rgba(244, 114, 182, 0.45),
+          0 16px 40px -6px rgba(168, 85, 247, 0.5);
+        background: linear-gradient(90deg, #f472b6 0%, #a855f7 100%);
+      }
+
+      .btn-hero-secondary {
+        color: #e5e7eb;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn-hero-secondary:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        background: rgba(168, 85, 247, 0.08);
+        border-color: rgba(168, 85, 247, 0.35);
+        box-shadow: 0 8px 28px -6px rgba(168, 85, 247, 0.2);
+      }
+
+      /* Glow animations */
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(20px, -30px) scale(1.1); }
+      }
+
+      @keyframes float-reverse {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-15px, 25px) scale(1.05); }
+      }
+
+      .glow-orb-1 { animation: float 10s ease-in-out infinite; }
+      .glow-orb-2 { animation: float-reverse 14s ease-in-out infinite; }
+
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade-up {
+        animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.35s; }
+      .delay-4 { animation-delay: 0.5s; }
+
+      /* Scroll indicator */
+      @keyframes scroll-bounce {
+        0%, 100% { transform: translateY(0); opacity: 0.6; }
+        50% { transform: translateY(8px); opacity: 1; }
+      }
+
+      .scroll-hint {
+        animation: scroll-bounce 2s ease-in-out infinite;
+      }
+
+      /* Card layouts */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .steps-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .card-lift {
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.35s ease,
+          border-color 0.35s ease;
+      }
+
+      .card-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Form styling */
+      .input-glow {
+        background-color: #12121a;
+        border-color: #2a2a38;
+        color: #f3f4f6;
+      }
+
+      .input-glow:focus {
+        box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+        border-color: rgba(168, 85, 247, 0.7);
+        outline: none;
+      }
+
+      .form-panel {
+        padding: 2.25rem 2rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      .partner-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0d0d14] text-white">
+    <div class="page-wrap overflow-x-hidden">
+
+      <!-- Navigation -->
+      <header class="nav-glass fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="#" class="flex items-center gap-2.5 group">
+            <svg class="transition-transform group-hover:scale-110" width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="navLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#f472b6" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+              <path d="M4 8C4 5.79 5.79 4 8 4h24c2.21 0 4 1.79 4 4v18c0 2.21-1.79 4-4 4H16l-7 7v-7H8c-2.21 0-4-1.79-4-4V8z" fill="url(#navLogoGrad)" />
+              <rect x="15" y="21" width="10" height="7" rx="2" fill="white" />
+              <path d="M17 21v-3a3 3 0 0 1 6 0v3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+            <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Lovx</span>
+          </a>
+          <div class="nav-links text-sm text-gray-400">
+            <a href="#story" class="hover:text-white transition-colors">Our Story</a>
+            <a href="#requirements" class="hover:text-white transition-colors">Requirements</a>
+            <a href="#register" class="px-6 py-2 rounded-full font-bold text-sm bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 transition-all shadow-lg shadow-pink-500/20">Apply Now</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="page-main">
+
+        <!-- Hero Section -->
+        <section class="hero-section relative flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+          <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="glow-orb-1 absolute top-[-10%] left-[-5%] w-[700px] h-[700px] rounded-full bg-pink-600/20 blur-[130px]"></div>
+            <div class="glow-orb-2 absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-purple-600/15 blur-[130px]"></div>
+            <div class="absolute top-[30%] right-[10%] w-[400px] h-[400px] rounded-full bg-pink-700/15 blur-[120px]"></div>
+          </div>
+
+          <div class="hero-inner relative z-10">
+            <div class="animate-fade-up inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/20 rounded-full px-4 py-1.5 text-sm text-pink-300 font-bold mb-8">
+              <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+              Join the Exclusive Launch Team
+            </div>
+            
+            <h1 class="animate-fade-up delay-1 text-5xl md:text-8xl font-black leading-[1.1] tracking-tight mb-8">
+              Earn Lifetime
+              <span class="bg-gradient-to-r from-pink-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent">Revenue.</span>
+              <br />Become our Partner.
+            </h1>
+
+            <p class="animate-fade-up delay-2 text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+              Get paid for every active user in your region. We are looking for
+              ambitious <span class="text-white font-bold underline decoration-pink-500">Working Partners</span> to lead our global expansion.
+            </p>
+
+            <div class="animate-fade-up delay-3 hero-cta-row">
+              <a href="#register" class="btn-hero btn-hero-primary">
+                <span>Join as a Partner</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#story" class="btn-hero btn-hero-secondary">
+                <span>Read Our Story</span>
+              </a>
+            </div>
+
+            <a href="#story" class="scroll-hint absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 hover:text-white transition-colors">
+              <span class="text-[10px] uppercase tracking-widest font-bold">Explore</span>
+              <span class="text-2xl animate-bounce">↓</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="story" class="section-gap px-6 bg-white/[0.01]">
+          <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-sm font-semibold mb-6">Our Vision</span>
+            <h2 class="text-4xl md:text-6xl font-black mb-10 leading-tight tracking-tight">
+              Let's Write a
+              <span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">New Story</span>
+              Together.
+            </h2>
+            <div class="text-xl md:text-2xl text-gray-300 leading-relaxed space-y-8">
+              <p>
+                Every social app has the same problem — <span class="text-white font-bold italic">fake profiles and broken promises.</span> We got tired of it.
+              </p>
+              <p>
+                That's why we built <span class="text-white font-bold">Lovx</span> — an honest app where people can truly connect. This is our dream.
+              </p>
+              <div class="p-8 rounded-3xl bg-pink-500/5 border border-pink-500/20 transform hover:scale-[1.02] transition-all">
+                <p class="text-2xl text-white font-black">
+                  "But to fulfill this dream, we need Working Partners like you."
+                </p>
+              </div>
+              <p>
+                This isn't just a job. It's an opportunity to be part of a new social media future and <span class="text-purple-400 font-bold">share in its success.</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section class="section-gap px-6 bg-[#0f0f18]/80">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-sm font-semibold mb-4">The Process</span>
+              <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">How it Works.</h2>
+              <p class="text-gray-500 text-lg">Your journey from registration to lifetime earnings.</p>
+            </div>
+            <div class="steps-grid">
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center">
+                <div class="text-6xl mb-8">📝</div>
+                <h3 class="text-2xl font-bold text-white mb-4">1. Register</h3>
+                <p class="text-gray-400 leading-relaxed">Apply as a Founding Partner today for free. No upfront cost, just your passion.</p>
+              </article>
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center scale-105 shadow-2xl">
+                <div class="text-6xl mb-8">📢</div>
+                <h3 class="text-2xl font-bold text-white mb-4">2. Promote</h3>
+                <p class="text-gray-400 leading-relaxed">Share Lovx with your community. We provide all the professional tools you need.</p>
+              </article>
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center">
+                <div class="text-6xl mb-8">💰</div>
+                <h3 class="text-2xl font-bold text-white mb-4">3. Earn</h3>
+                <p class="text-gray-400 leading-relaxed">Get a lifetime commission on every subscription and renewal in your network.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Partner Profile Section -->
+        <section id="requirements" class="section-gap px-6">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-xs font-bold uppercase tracking-widest mb-4">Elite Opportunity</span>
+              <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">The Founding Partner.</h2>
+            </div>
+
+            <div class="card-lift group relative rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-10 md:p-16">
+              <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-32 h-32 shrink-0 rounded-3xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-7xl shadow-2xl shadow-pink-500/30 transform group-hover:rotate-6 transition-all duration-700">👑</div>
+                <div class="flex-1 text-center md:text-left">
+                  <h3 class="text-4xl font-black text-white mb-2">Executive Member</h3>
+                  <p class="text-pink-400 font-bold uppercase tracking-[0.3em] text-sm mb-8">Official Launch Team</p>
+                  
+                  <div class="partner-stats border-y border-white/5 py-8 mb-8">
+                    <div>
+                      <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Requirement</p>
+                      <p class="text-3xl font-black text-white">1K+ Followers</p>
+                    </div>
+                    <div>
+                      <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Commission</p>
+                      <p class="text-3xl font-black text-pink-400">30% Flat</p>
+                    </div>
+                  </div>
+                  
+                  <p class="text-xl text-gray-300 leading-relaxed italic">"A digital leader ready to pioneer an honest social future."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="section-gap px-6 bg-white/[0.015]">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-sm font-semibold mb-4">Our Core Idea</span>
+              <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">A Fair & Honest Platform.</h2>
+              <p class="text-gray-400 text-lg max-w-2xl mx-auto">Transparency and trust are at the core of everything we do.</p>
+            </div>
+            <div class="steps-grid">
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center">
+                <div class="text-5xl mb-6">🔒</div>
+                <h3 class="text-2xl font-bold text-white mb-4">No Fake Profiles</h3>
+                <p class="text-gray-400 leading-relaxed">We will never use fake profiles or misleading ads. Authenticity is our top priority.</p>
+              </article>
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center scale-105">
+                <div class="text-5xl mb-6">🔓</div>
+                <h3 class="text-2xl font-bold text-white mb-4">80% Free Access</h3>
+                <p class="text-gray-400 leading-relaxed">The majority of features will always be free. No paywalls for basic human connections.</p>
+              </article>
+              <article class="card-lift p-10 rounded-3xl border border-white/5 bg-white/[0.02] text-center">
+                <div class="text-5xl mb-6">🛡️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">Affordable Premium</h3>
+                <p class="text-gray-400 leading-relaxed">Paid features will be low-cost and provide genuine value to every single user.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="section-gap px-6 bg-pink-500/[0.02]">
+          <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm font-semibold mb-4">Apply Now</span>
+              <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Start Your Partnership.</h2>
+              <p class="text-gray-400 text-lg">Fill out the form below to join the Lovx Founding Circle.</p>
+            </div>
+
+            <form id="registration-form" class="form-panel rounded-[2.5rem] border border-white/10 bg-white/[0.03] space-y-8 backdrop-blur-xl">
+              <div class="hidden" aria-hidden="true"><input tabindex="-1" autocomplete="off" name="bot-field" /></div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Full Name *</label>
+                  <input type="text" name="name" required placeholder="Your Name" class="input-glow w-full border rounded-2xl px-5 py-4 text-white placeholder-gray-600 transition-all" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Email Address *</label>
+                  <input type="email" name="email" required placeholder="name@example.com" class="input-glow w-full border rounded-2xl px-5 py-4 text-white placeholder-gray-600 transition-all" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Gender *</label>
+                  <select name="gender" required class="input-glow w-full border rounded-2xl px-5 py-4 text-white transition-all appearance-none">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="woman">Woman</option>
+                    <option value="man">Man</option>
+                    <option value="nonbinary">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">Mobile *</label>
+                  <input type="tel" name="mobile" required placeholder="+91-XXXXXXXXXX" class="input-glow w-full border rounded-2xl px-5 py-4 text-white placeholder-gray-600 transition-all" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">City / Location *</label>
+                <input type="text" name="city" required placeholder="Your City" class="input-glow w-full border rounded-2xl px-5 py-4 text-white placeholder-gray-600 transition-all" />
+              </div>
+
+              <div class="pt-6 space-y-8 border-t border-white/5">
+                <p class="text-[10px] font-black text-gray-600 uppercase tracking-[0.3em] text-center">Social Media Influence</p>
+                
+                <div class="grid grid-cols-4 gap-6">
+                  <div class="col-span-1">
+                    <label class="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase tracking-tighter mb-2">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#E4405F]"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                      Followers
+                    </label>
+                    <input type="text" name="instagram_followers" placeholder="50K" class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                  <div class="col-span-3">
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Profile Link</label>
+                    <input type="text" name="instagram_link" placeholder="https://instagram.com/..." class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-6">
+                  <div class="col-span-1">
+                    <label class="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase tracking-tighter mb-2">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      Followers
+                    </label>
+                    <input type="text" name="facebook_followers" placeholder="25K" class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                  <div class="col-span-3">
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Profile Link</label>
+                    <input type="text" name="facebook_link" placeholder="https://facebook.com/..." class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-6">
+                  <div class="col-span-1">
+                    <label class="flex items-center gap-2 text-[10px] font-bold text-gray-500 uppercase tracking-tighter mb-2">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                      Subscribers
+                    </label>
+                    <input type="text" name="youtube_followers" placeholder="10K" class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                  <div class="col-span-3">
+                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Channel Link</label>
+                    <input type="text" name="youtube_link" placeholder="https://youtube.com/..." class="input-glow w-full border rounded-xl px-4 py-3 text-white text-sm" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-6">
+                <button type="submit" class="w-full py-5 rounded-2xl font-black text-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-[1.02] transition-all shadow-xl active:scale-95 disabled:opacity-50">
+                  Submit My Application →
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-white/5 py-20 px-6 text-center bg-black/40">
+        <span class="text-3xl font-black bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Lovx</span>
+        <nav class="flex flex-wrap justify-center gap-8 mt-8 text-sm text-gray-500">
+          <a href="#story" class="hover:text-white transition-colors">Our Story</a>
+          <a href="#requirements" class="hover:text-white transition-colors">Requirements</a>
+          <a href="#register" class="hover:text-pink-400 transition-colors font-bold">Join the Circle</a>
+        </nav>
+        <p class="text-gray-600 mt-10 text-sm font-medium">© 2026 Lovx. All rights reserved.</p>
+      </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const { createClient } = supabase;
+        const _supabase = createClient(
+          "https://uvrqrdtxwcnalpbxzdje.supabase.co",
+          "sb_publishable_ueDwJ3zmu95jUZzH4CyKKA_HsjZDCbP"
+        );
+        const form = document.getElementById("registration-form");
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="inline-flex items-center gap-3">Processing... <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg></span>';
+
+          const formData = new FormData(form);
+          const data = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            gender: formData.get("gender"),
+            city: formData.get("city"),
+            mobile: formData.get("mobile"),
+            instagram_followers: formData.get("instagram_followers"),
+            instagram_link: formData.get("instagram_link"),
+            facebook_followers: formData.get("facebook_followers"),
+            facebook_link: formData.get("facebook_link"),
+            youtube_followers: formData.get("youtube_followers"),
+            youtube_link: formData.get("youtube_link"),
+          };
+
+          try {
+            const { error } = await _supabase.from("registrations").insert([data]);
+            if (error) throw error;
+            submitBtn.innerHTML = "Success! Applied ✓";
+            submitBtn.style.background = "#7c3aed";
+            form.reset();
+          } catch (err) {
+            alert("Something went wrong. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Application";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
