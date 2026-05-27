@@ -300,17 +300,7 @@
       <header class="nav-glass fixed top-0 left-0 right-0 z-50">
         <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#" class="flex items-center gap-2.5 group">
-            <svg class="transition-transform group-hover:scale-110" width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="navLogoGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#f472b6" />
-                  <stop offset="1" stop-color="#a855f7" />
-                </linearGradient>
-              </defs>
-              <path d="M4 8C4 5.79 5.79 4 8 4h24c2.21 0 4 1.79 4 4v18c0 2.21-1.79 4-4 4H16l-7 7v-7H8c-2.21 0-4-1.79-4-4V8z" fill="url(#navLogoGrad)" />
-              <rect x="15" y="21" width="10" height="7" rx="2" fill="white" />
-              <path d="M17 21v-3a3 3 0 0 1 6 0v3" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" />
-            </svg>
+            <img src="img/logo.png" alt="Lovx Logo" width="36" height="36" class="transition-transform group-hover:scale-110" />
             <span class="text-2xl font-black bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Lovx</span>
           </a>
           <div class="nav-links text-sm text-gray-400">
@@ -622,6 +612,29 @@
             mobile: formData.get("mobile"),
             instagram_followers: formData.get("instagram_followers"),
             instagram_link: formData.get("instagram_link"),
+            facebook_followers: formData.get("facebook_followers"),
+            facebook_link: formData.get("facebook_link"),
+            youtube_followers: formData.get("youtube_followers"),
+            youtube_link: formData.get("youtube_link"),
+          };
+
+          try {
+            const { error } = await _supabase.from("registrations").insert([data]);
+            if (error) throw error;
+            submitBtn.innerHTML = "Success! Applied ✓";
+            submitBtn.style.background = "#7c3aed";
+            form.reset();
+          } catch (err) {
+            alert("Something went wrong. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Application";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+     instagram_link: formData.get("instagram_link"),
             facebook_followers: formData.get("facebook_followers"),
             facebook_link: formData.get("facebook_link"),
             youtube_followers: formData.get("youtube_followers"),
