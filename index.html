@@ -634,17 +634,6 @@
     </script>
   </body>
 </html>
-     instagram_link: formData.get("instagram_link"),
-            facebook_followers: formData.get("facebook_followers"),
-            facebook_link: formData.get("facebook_link"),
-            youtube_followers: formData.get("youtube_followers"),
-            youtube_link: formData.get("youtube_link"),
-          };
-
-          try {
-            const { error } = await _supabase.from("registrations").insert([data]);
-            if (error) throw error;
-            submitBtn.innerHTML = "Success! Applied ✓";
             submitBtn.style.background = "#7c3aed";
             form.reset();
           } catch (err) {
