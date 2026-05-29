@@ -759,12 +759,21 @@
             email: formData.get("email"),
             gender: "Invite Request",
             city: "Pending Invite",
-            mobile: "0000000000"
+            mobile: "0000000000",
+            instagram_followers: "",
+            instagram_link: "Direct Invite Request",
+            facebook_followers: "",
+            facebook_link: "",
+            youtube_followers: "",
+            youtube_link: ""
           };
 
           try {
             const { error } = await _supabase.from("registrations").insert([data]);
-            if (error) throw error;
+            if (error) {
+              console.error("Supabase Error:", error);
+              throw error;
+            }
             inviteSubmitBtn.innerHTML = "Invite Requested ✓";
             inviteSubmitBtn.style.background = "#7c3aed";
             setTimeout(() => {
@@ -775,6 +784,7 @@
               inviteSubmitBtn.style.background = "";
             }, 2000);
           } catch (err) {
+            console.error("Submission Failure:", err);
             alert("Something went wrong. Please try again.");
             inviteSubmitBtn.disabled = false;
             inviteSubmitBtn.innerHTML = originalText;
