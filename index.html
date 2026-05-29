@@ -757,11 +757,12 @@
           const data = {
             name: formData.get("name"),
             email: formData.get("email"),
-            notes: "Direct Invite Request from Play Store Button"
+            gender: "Invite Request",
+            city: "Pending Invite",
+            mobile: "0000000000"
           };
 
           try {
-            // Reusing registrations table for simplicity, or we can use another table
             const { error } = await _supabase.from("registrations").insert([data]);
             if (error) throw error;
             inviteSubmitBtn.innerHTML = "Invite Requested ✓";
